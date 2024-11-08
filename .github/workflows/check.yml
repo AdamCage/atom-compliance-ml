@@ -7,4 +7,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
       - name: Install libs
-        run: pip install -f requirements.txt
+        run: python pip install -f requirements.txt
