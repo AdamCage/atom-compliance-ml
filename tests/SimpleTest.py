@@ -6,7 +6,7 @@ def test_check_simple_method_success():
 
 def test_check_simple_method_failure():
     expected_data = 3
-    actual_data = plus(1, 3)
+    actual_data = plus(1, 2)
     assert expected_data != actual_data
 
 
