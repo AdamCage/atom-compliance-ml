@@ -7,4 +7,4 @@ PyYAML
 scikit-learn
 scipy
 catboost
-pytest
+pylint
