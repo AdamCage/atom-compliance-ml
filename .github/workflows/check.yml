@@ -39,7 +39,7 @@ jobs:
       - name: Unit Tests
         run: python -m unittest discover
   build_artifact:
-#    needs: [test]
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -56,6 +56,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: 1.0
+          name: atom-compliance-ml-test-release.zip
           path: build_artifacts/artifacts/atom-compliance-ml-test-release.zip
           if-no-files-found: error
