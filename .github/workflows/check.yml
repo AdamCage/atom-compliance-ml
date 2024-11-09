@@ -52,11 +52,14 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
           type: 'zip'
-          filename: 'atom-compliance-ml.zip'
+          filename: 'atom-compliance-ml'
           exclusions: '*.git* .venv'
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: atom-compliance-ml.zip
-          path: atom-compliance-ml.zip
+          path: |
+            dist/*.tar.gz
+            dist/*.whl
+            atom-compliance-ml.zip
           if-no-files-found: error
