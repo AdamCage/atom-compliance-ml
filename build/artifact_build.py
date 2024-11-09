@@ -19,6 +19,7 @@ def build():
             for file in files:
                 file_path = os.path.join(root, file)
                 zipf.write(file_path, os.path.relpath(file_path, source_dir))
+    print("File create success")
 
 
 if __name__ == '__main__':
