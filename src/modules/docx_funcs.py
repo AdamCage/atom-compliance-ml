@@ -1,9 +1,13 @@
 from pathlib import Path
 import re
 from typing import Any
+from collections import Counter
 
 import docx
 from docx import Document
+import difflib
+from nltk.corpus import stopwords
+import pandas as pd
 
 
 def extract_text_from_docx(docx: docx.document.Document) -> list[str]:
@@ -26,6 +30,26 @@ def extract_elements(lines: list[str], subheader: str) -> str:
             result.append(element)
 
     return "\n".join(result)
+
+
+def get_differences(uc_text: str, ssts_text: str, diraction: str) -> str:
+    stopws = set(stopwords.words('english'))
+
+    diff = list(
+        difflib.ndiff(
+            [w for w in uc_text.split() if w not in stopws],
+            [w for w in ssts_text.split() if w not in stopws]
+        )
+    )
+
+    diff_stat = Counter([word.replace("+", "") for word in diff if word.startswith(diraction)])
+
+    res = (
+        f'Next words are missing in {"UC-text" if diraction == "-" else "SSTS-text"}:\n'
+        + "".join(f'{w}: {c}\n' for w, c in diff_stat.items())
+    )
+    
+    return res.replace(",", "")
 
 
 def create_ds_row(fid: str, hmi_dir: Path, ssts_dir: Path, columns: list[str]) -> dict[str: Any]:
@@ -84,8 +108,37 @@ def create_ds_row(fid: str, hmi_dir: Path, ssts_dir: Path, columns: list[str]) -
             + extract_elements(uc_lines, "alternative_scenario_a_a(turn_off_the_hotspot)")
         )
 
-        row["differences"] = None
-        row["descriptions"] = None
+        row["differences"] = get_differences(
+            "\n".join(uc_lines),
+            "\n".join(extract_text_from_docx(ssts_docx)) if ssts_docx is not None else "",
+            "-"
+        )
+        row["description"] = get_differences(
+            "\n".join(uc_lines),
+            "\n".join(extract_text_from_docx(ssts_docx)) if ssts_docx is not None else "",
+            "+"
+        )
         row["complience_level"] = None
 
     return row
+
+
+def create_ds(uc_data_dir: Path, ssts_data_dir: Path, columns: list[str]) -> pd.DataFrame:
+    hmi_files = [file.name for file in uc_data_dir.iterdir() if file.is_file()]
+    ssts_files = [file.name for file in ssts_data_dir.iterdir() if file.is_file()]
+
+    ids = set(
+        [
+            "".join(char for char in fname if char.isdigit())
+            for fname in (
+                hmi_files + ssts_files
+        )
+        ]
+    )
+
+    ds_rows = [
+        create_ds_row(fid, uc_data_dir, ssts_data_dir, columns)
+        for fid in ids
+    ]
+
+    return pd.DataFrame(ds_rows, columns=columns)

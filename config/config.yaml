@@ -36,6 +36,12 @@ target_dict:
   NC: 2
   NA: 1
 
+ml:
+  min_ml_target: 2
+  max_ml_target: 5
+
+report_columns: [id, case_name, differences, description, complience_level]
+
 ds:
   sep: "|"
   encoding: utf-8

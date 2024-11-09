@@ -25,7 +25,7 @@ def extract_text_vectors(
     vectors = []
     for index, row in df.reset_index(drop=True).iterrows():
         index += 1
-        text = row[column][:1850]
+        text = row[column][:1300]
         input_ids = torch.tensor(
             [tokenizer.encode(text, add_special_tokens=True)]).to(device)
         with torch.no_grad():
