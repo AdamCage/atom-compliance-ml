@@ -18,24 +18,18 @@ def extract_text_from_subheaders(lines: list[str], subheaders: dict[str: str]) -
     for line in lines:
         line_ = (
             line
+            .replace("\\n", "")
+            .strip()
             .lower()
             .replace(" ", "_")
-            .replace(":", "")
-            .strip()
         )
+        line_ = re.sub(":.*", "", line_)
 
-        if subheaders.get(line_, None) is not None and subheaders.get(line_, None) != "other":
+        if subheaders.get(line_, None) is not None:
             if current_header is not None:
                 res[current_header] = "\n".join(current_text).strip()
             
             current_header = line
-            current_text = []
-
-        elif subheaders.get(line_, None) == "other":
-            if current_header is not None:
-                res[current_header] = "\n".join(current_text).strip()
-            
-            current_header = "other"
             current_text = []
         
         else:
