@@ -4,11 +4,12 @@ import zipfile
 
 
 def build():
-    with open("../config/config.yaml") as config:
-        version_app = yaml.safe_load(config)["version_app"]
+    # with open("../config/config.yaml") as config:
+    #     version_app = yaml.safe_load(config)["version_app"]
 
     source_dir = '../../atom-compliance-ml'
-    output_filename = f'../../atom-compliance-ml-{version_app}-release.zip'
+    # output_filename = f'../../atom-compliance-ml-{version_app}-release.zip'
+    output_filename = f'../../atom-compliance-ml-test-release.zip'
 
     with zipfile.ZipFile(output_filename, 'w') as zipf:
         for root, dirs, files in os.walk(source_dir):
