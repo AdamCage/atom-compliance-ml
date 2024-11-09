@@ -1,4 +1,3 @@
-import yaml
 import os
 import zipfile
 
@@ -9,11 +8,10 @@ def build():
 
     source_dir = '../../atom-compliance-ml'
     # output_filename = f'../../atom-compliance-ml-{version_app}-release.zip'
-    output_filename = f'../../atom-compliance-ml-test-release.zip'
+    output_filename = f'../atom-compliance-ml-test-release.zip'
 
     with zipfile.ZipFile(output_filename, 'w') as zipf:
         for root, dirs, files in os.walk(source_dir):
-            # Пропускаем каталог `venv`
             if 'venv' in root:
                 continue
             if '__pycache__' in root:
