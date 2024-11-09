@@ -35,3 +35,9 @@ target_dict:
   PC: 3
   NC: 2
   NA: 1
+
+ds:
+  sep: "|"
+  encoding: utf-8
+
+bert: bert-base-uncased

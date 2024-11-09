@@ -42,8 +42,6 @@ def extract_text_from_subheaders(lines: list[str], subheaders: dict[str: str]) -
 
 
 def extract_text_from_subheader(lines: list[str], subheader: str) -> list[str]:
-    res = {}
-
     flat_lines = "\n".join(lines)
     pattern = rf'{re.escape(subheader)}(.*?)(?=:?\n.*?:?\n)'
 
