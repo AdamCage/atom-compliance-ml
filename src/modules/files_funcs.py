@@ -1,7 +1,6 @@
 from pathlib import Path
 from typing import Any
 
-from pathlib import Path
 import yaml
 
 
@@ -17,4 +16,3 @@ def load_yaml(path: Path) -> dict[str, Any]:
 
     with open(path, "r") as file:
         return yaml.safe_load(file)
-
