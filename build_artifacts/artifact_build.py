@@ -12,15 +12,15 @@ def build():
     exclude_dirs = {'venv', '__pycache__', '.git'}
     exclude_files = set()
 
-    # with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-    #     for root, dirs, files in os.walk(source_dir):
-    #         dirs[:] = [d for d in dirs if d not in exclude_dirs]
-    #         files = [f for f in files if f not in exclude_files]
-    #         for file in files:
-    #             file_path = os.path.join(root, file)
-    #             arcname = os.path.relpath(file_path, source_dir)
-    #             zipf.write(file_path, arcname)
-    # zipf.close()
+    with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(source_dir):
+            dirs[:] = [d for d in dirs if d not in exclude_dirs]
+            files = [f for f in files if f not in exclude_files]
+            # for file in files:
+            #     file_path = os.path.join(root, file)
+            #     arcname = os.path.relpath(file_path, source_dir)
+            #     zipf.write(file_path, arcname)
+    zipf.close()
     print("Архив успешно создан и сохранен в:", output_path)
 
 
