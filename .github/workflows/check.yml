@@ -1,11 +1,10 @@
 name: Check
 on:
-  #  pull_request:
-  #    types:
-  #      - opened
-  #      - synchronize
-  #      - reopened
-  - push
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -37,7 +36,7 @@ jobs:
       - name: Unit Tests
         run: python -m unittest discover
   build_artifact:
-    #    needs: [test]
+    needs: [ test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
