@@ -41,6 +41,21 @@ def extract_text_from_subheaders(lines: list[str], subheaders: dict[str: str]) -
     return res
 
 
+def extract_text_from_subheader(lines: list[str], subheader: str) -> list[str]:
+    res = {}
+
+    flat_lines = "\n".join(lines)
+    pattern = rf'{re.escape(subheader)}(.*?)(?=:?\n.*?:?\n)'
+
+    match = re.search(pattern, flat_lines, re.DOTALL)
+
+    if match:
+        return match.group(1).strip()
+    
+    else:
+        return "NO DATA"
+
+
 def create_ds_row(fid: str, hmi_dir: Path, ssts_dir: Path, columns: list[str], hmi_subheaders) -> dict[str: Any]:
     try:
         hmi_docx = Document(hmi_dir / f'UC-{fid}.docx')
