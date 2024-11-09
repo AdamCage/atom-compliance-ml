@@ -1,26 +1,26 @@
 import os
 import zipfile
-import os
 
 
 def build():
-    # with open("../config/config.yaml") as config:
-    #     version_app = yaml.safe_load(config)["version_app"]
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    source_dir = os.path.abspath(os.path.join(script_dir, '..'))
+    output_dir = os.path.join(source_dir, 'build_artifacts', 'artifacts')
+    os.makedirs(output_dir, exist_ok=True)
+    output_filename = 'atom-compliance-ml.zip'
+    output_path = os.path.join(output_dir, output_filename)
+    exclude_dirs = {'venv', '__pycache__', '.git'}
+    exclude_files = set()
 
-    source_dir = '../../atom-compliance-ml'
-    # output_filename = f'../../atom-compliance-ml-{version_app}-release.zip'
-    output_filename = f'../atom-compliance-ml-test-release.zip'
-
-    with zipfile.ZipFile(output_filename, 'w') as zipf:
+    with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, dirs, files in os.walk(source_dir):
-            if 'venv' in root:
-                continue
-            if '__pycache__' in root:
-                continue
+            dirs[:] = [d for d in dirs if d not in exclude_dirs]
+            files = [f for f in files if f not in exclude_files]
             for file in files:
                 file_path = os.path.join(root, file)
-                zipf.write(file_path, os.path.relpath(file_path, source_dir))
-    print("File create success")
+                arcname = os.path.relpath(file_path, source_dir)
+                zipf.write(file_path, arcname)
+    print("Архив успешно создан и сохранен в:", output_path)
 
 
 if __name__ == '__main__':

@@ -1,4 +1,3 @@
- version_app: "1.0"
 ds_topology:
   main_columns: [id, case_name, full_uc_text, full_ssts_text]
   hmi_subheaders:
