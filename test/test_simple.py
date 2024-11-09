@@ -1,5 +1,3 @@
-import unittest
-
 from unittest import TestCase
 from test.simple import plus
 

@@ -7,4 +7,5 @@ PyYAML
 scikit-learn
 scipy
 catboost
-pylint
+ruff
+pycodestyle
