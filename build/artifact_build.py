@@ -21,7 +21,7 @@ def build():
     #             file_path = os.path.join(root, file)
     #             zipf.write(file_path, os.path.relpath(file_path, source_dir))
     source_dir = os.path.abspath('../../atom-compliance-ml')
-    output_dir = os.path.abspath('./artifacts')
+    output_dir = os.path.abspath('../artifacts')
     output_filename = os.path.join(output_dir, f'atom-compliance-ml-test-release.zip')
 
     os.makedirs(output_dir, exist_ok=True)
