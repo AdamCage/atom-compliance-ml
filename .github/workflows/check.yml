@@ -15,7 +15,7 @@ jobs:
           pip install -r requirements.txt
       - name: Lint
         run: |
-          pycodestyle --show-source --show-pep8 
+          pycodestyle --show-source --show-pep8 src
           ruff check src
   test:
     needs: [lint]
