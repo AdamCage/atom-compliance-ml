@@ -1,12 +1,25 @@
 import yaml
-import shutil
+import os
+import zipfile
 
 
 def build():
-    version_app = yaml.safe_load("version_app")
+    with open("../config/config.yaml") as config:
+        version_app = yaml.safe_load(config)["version_app"]
+
     source_dir = '../../atom-compliance-ml'
-    output_filename = f'artifacts/atom-compliance-ml-{version_app}-release'
-    shutil.make_archive(output_filename, 'zip', source_dir)
+    output_filename = f'../../atom-compliance-ml-{version_app}-release.zip'
+
+    with zipfile.ZipFile(output_filename, 'w') as zipf:
+        for root, dirs, files in os.walk(source_dir):
+            # Пропускаем каталог `venv`
+            if 'venv' in root:
+                continue
+            if '__pycache__' in root:
+                continue
+            for file in files:
+                file_path = os.path.join(root, file)
+                zipf.write(file_path, os.path.relpath(file_path, source_dir))
 
 
 if __name__ == '__main__':
