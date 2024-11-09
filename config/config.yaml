@@ -7,7 +7,7 @@ ds_topology:
     alternative_scenario_a: alternative_scenario
     alternative_scenario_b: alternative_scenario
     alternative_scenario_c: alternative_scenario
-    description: description
+    description: other
     goal: goal
     context: other
     scope: other
@@ -28,3 +28,10 @@ ds_topology:
     triggers: other
     requirenments: other
   targets: [Differences, Description, Complience Level]
+
+target_dict:
+  FC: 5
+  LC: 4
+  PC: 3
+  NC: 2
+  NA: 1
