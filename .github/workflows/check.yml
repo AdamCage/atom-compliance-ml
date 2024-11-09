@@ -58,3 +58,4 @@ jobs:
         with:
           name: 1.0
           path: atom-compliance-ml-test-release.zip
+          if-no-files-found: error
