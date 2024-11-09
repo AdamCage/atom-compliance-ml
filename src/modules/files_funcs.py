@@ -1,12 +1,12 @@
 from pathlib import Path
-from typing import Any
+from typing import Any, Dict
 import joblib
 from datetime import datetime
 
 import yaml
 
 
-def load_yaml(path: Path) -> dict[str, Any]:
+def load_yaml(path: Path) -> Dict[str, Any]:
     """_summary_
 
     Args:

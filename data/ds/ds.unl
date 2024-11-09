@@ -1,161 +1,58 @@
-id|case_name|full_uc_text|full_ssts_text|postconditions|main_scenario|goal|other|preconditions|differences|description|complience_level|target
-6583|Driver initiate a call through SWP|"[I-6583]  Driver initiate a call through SWP
-Preconditions:
-The IVI is on in_2 
-The vehicle can be shifted to any of the PRND drive modes. 
-The driver's smartphone is connected to the vehicle's system via Bluetooth (in_32).[I-6323] Pairing a Mobile Phone 
-The driver has granted necessary permissions for phone information, including contacts and recent calls[I-6326] Import data from mobile phone, SMS, and supported messenger apps on in_5. 
+id|case_name|full_uc_text|full_ssts_text|other|postconditions|preconditions|main_scenario|goal|differences|description|complience_level|target
+28561|Setting Hotspot name & password|"[I-28561]  Setting Hotspot name & password
+Use-Case Title: ""Setting Hotspot name & password""
+Goal:
+Users can modify the name and password of the vehicle hotspot according to their needs. 
+Scope: 
+SWP 
+Tigger:
+NA 
+Actors:
+Driver 
+Owner 
+Precondition:
+IVI system startup out_2 SWP Android. 
 Main Scenario:
-The driver navigates to the 'Calls' option on the SWP Android (out_2), displaying the most recent calls. 
-The driver initiates a call by selecting a number from the recent calls list. 
-The interior ambient light (out_12) changes color [blue, static display] to signal the outgoing call. 
-The call status is displayed on the HUD (out_3) and SWP Android (out_2). 
-The vehicle's microphone (in_24) and speakers (out_24) are used for the call. 
-Postconditions:
-If the call is initiated successfully, the SWP Android (out_2) displays an active call interface. 
-The driver is able to use the hands-free phone functionality on the SWP Android (out_2). 
-Alternative Scenario A:
-The driver activates the voice assistant (in_24) and instructs it to place a call to a contact from the contact list in a supported messenger or a specific number. 
-By default without the driver specifying which messenger to call through, the call is placed via the phone. If there is no name in the contact list of the messenger, the voice assistant says that to the driver and suggests placing a call via the phone. 
-The rest of the steps follow as in the main scenario. 
-Alternative Scenario B:
-The driver navigates to the 'Calls' option on the SWP Android (out_2). If the recent calls list is empty, a message stating ""No Recent Calls"" is displayed. 
-The rest of the steps follow as in the main scenario. 
-Alternative Scenario C:
-If GSM network is not available, an error message will be shown on out_2, prompting to recall. "|"Make a call (B sample)
-Functional Description:
-Users can dial through IVI and make phone calls. Only when the vehicle is stopped can calls be made through SWP.
-1. Enabling conditions (a&b&c):
-a. IVI system startup;
-b. User can operate SWP;
-c. Mobile Bluetooth connected.
-2. Trigger conditions (a|b|c|d|e|f):
-a. Toggledialpad via SWP to make a call, if the driver doesn't have this number in contacts,Enter the phone number on the dialpad to make a call.
-b. Make a call through voice commands;
-c. Make a call through the mobile phone.
-Make a phone call. Trigger a call via connected phone.
-d. Toggle 'Call' menu option (where driver can see recent calls) via SWP to make a call;
-e. Driver select contact for calling in synchronized phonebook via SWP;
-f. IVI stores and displays the phone number of the roadside assistance hotline in advance, and users click on SWP to call the roadside assistance hotline;
-3. Execution output (a&b&c&d&e&f&g):
-a. The dialpad interface has a numeric keyboard and dialing software buttons;
-b. After dialing, click the dial soft button to enter the call interface, and the phone call is dialed;
-After entering a number on the phone, the phone is dialed. dialpad, click the dialing software button to enter the calling interface, and the mobile phone will make a call;
-c. When the dialed number is not answered, click the hang-up soft button to interrupt the number dialing.
-When the dialed number is not answered, you can click the hang up soft button to interrupt the number call.
-d. After the call is dialed, IVI activates and switches the audio channel to the Bluetooth phone, and IVI synchronizes call operation with smartphone;
-IVI automatically activates and switches to the mobile audio channel.
-e. During the call, display the call status through SWP;
-f. Driver inputs numbers in a tone mode during the call via SWP;
-g. After the user clicks to make a roadside assistance hotline call, IVI dials the number of the roadside assistance hotline call through their mobile phone;
-4. Exit conditions (a|b|c|d):
-a. IVI system shutdown;
-b. Bluetooth disconnected.
-c. User stopped call.
-d. The other party hung up the phone.
-Notes:
-If the Bluetooth phone is not connected, the user will receive a text prompt on the SWP Bluetooth phone page saying ""No paired smartphone"" when opening the phone application;"|"Postconditions:
-If the call is initiated successfully, the SWP Android (out_2) displays an active call interface. 
-The driver is able to use the hands-free phone functionality on the SWP Android (out_2). "|"Main Scenario:
-The driver navigates to the 'Calls' option on the SWP Android (out_2), displaying the most recent calls. 
-The driver initiates a call by selecting a number from the recent calls list. 
-The interior ambient light (out_12) changes color [blue, static display] to signal the outgoing call. 
-The call status is displayed on the HUD (out_3) and SWP Android (out_2). 
-The vehicle's microphone (in_24) and speakers (out_24) are used for the call. "|||"Preconditions:
-The IVI is on in_2 
-The vehicle can be shifted to any of the PRND drive modes. 
-The driver's smartphone is connected to the vehicle's system via Bluetooth (in_32).[I-6323] Pairing a Mobile Phone 
-The driver has granted necessary permissions for phone information, including contacts and recent calls[I-6326] Import data from mobile phone, SMS, and supported messenger apps on in_5. "||||2
-8692|Emergency Service Communication (ERA-Glonass)|"[I-8692]  Emergency Service Communication (ERA-Glonass)
-Preconditions:
-The vehicle is in the Drive State (PRND)
-The vehicle is capable of communicating with emergency services (ERA-Glonass functional).
-The vehicle is involved in or witnesses an emergency, such as a collision or a medical issue, necessitating communication with emergency services.
-Trigger:
-The vehicle sensors detect a collision and activate the emergency communication feature.
-The driver manually presses in_19. SOS button (roof console)activate the emergency communication feature.
-Main Scenario:
-The ERA-Glonass initiates emergency service communication.
-During the emergency call, the safety audio system automatically mutes or lowers the volume of other audio sources within the vehicle, such as the radio, navigation prompts, or entertainment systems.
-The public safety answering point (PSAP) receives critical information about the situation, location, and the nature of the emergency from the In-vehicle system and occupants' answers.
-The communication continues until the PSAP determines that it is safe to end the call or until the situation is resolved.
-Once the emergency communication ends, the safety audio system restores the audio sources to their previous settings, or the driver can manually unmute the audio via in_2.
-Postconditions：
-The driver is able to communicate with the emergency services via ERA-Glonass.
-Alternative Scenarios:
-A. ERA-Glonass Malfunction
-There is a notification display on out_2, out_5 when the ERA-GLONASS has an error.
-If ERA can not be activated, the driver or passengers may need to use personal mobile devices in_5.Smartphone or other means to contact emergency services.
-If the driver does not respond to the emergency service communication attempts due to system malfunction or physical reasons, ERA will still attempt the call and locate the vehicle, lights on out_19. SOS button (roof console) and 16. Turn lamps (right & left) \ Warning at the same time.
-
-"|"Manual dialing E-CALL
+The user guides to the hotspot page out_2. SWP Android. 
+Click in_2. SWP Android the hotspot name or password to enter the modification page. 
+The user modifies the name or password and clicks 'save' in_2. SWP Android. 
+Postcondition:
+The hotspot name or password will be modified successfully. 
+Requirements:
+The hotspot name and password will be saved in the vehicle profile. 
+After changing the password, the previous device needs to enter the new password to reconnect. "|"hotspot settings
 Functional Description
-
-The user presses the SOS button to actively trigger E-Call. ERA uploads vehicle information data to the ERA operator and uses ERA's built-in communication module to make an emergency call to the 112.
-
-Enabling conditions (a & b):
-
-a. ERA is in the ERA state
-
-b. detected the hw.KL15ON (Power status is KL15 ON)
-
+Users can modify the name and password of the vehicle hotspot according to their needs. This function can only be used when the vehicle is in a stopped state.
+Enabling conditions (a&b&c):
+IVI system startup;
+User can operate SWP;
+IVI hotspot is enabled.
 Trigger conditions (a):
-
-a. The user long presses the E-CALL button
-
-Execution output output（a&b&c&d&e&f&g&h）：
-
-a. ERA detects the hw.EcalIKey signal and ERA starts tmr. EcallLongPress;ERA enters theECALL MODE-CALL CONFIRM state when cal.EcallLongPress（Default : 2s TBD）＜tmr.EcallLongPress＜cal.EcallLongPress（Default : 5s TBD）;
-
-b. ERA sends hw.EcallMute signal（MUTE_OUT）to IVI；
-
-b. ERA sends a hw.EcallMute signal（MUTE_OUT） to IVI;
-
-c. ERA drives speaker to play prompt sound. ③ : “Tone sound BEEP BEEP” through the hw.ERASoundOutput, and ERA sends hw.EcallIndicator to control the LED light flashes (Refer to the Ecall switch Indicator Drive section), prompting the user to cancel the call; ERA sends MSD message to the ERA operator; ERA needs to determine the network condition. When the network cannot send MSD, SMS is used to send MSD;
-
-c. ERA drives speaker to play prompt sound. ③ : “Tone sound BEEP BEEP” through the hw.ERASoundOutput, and ERA sends hw.EcallIndicator to control the LED light flashes (Refer to the Ecall switch Indicator Drive section), prompting the user to cancel the call; ERA sends MSD message to the ERA operator; ERA needs to determine the network condition. When the network cannot send MSD, SMS is used to send MSD;
-
-d.ERA plays the prompt tone ""Tone sound BEEP BEEP"", the LED light flashes at 1Hz, and tries to establish a voice call with the ERA operator. b&c&d need to be completed within 1s (according to GOST_33464 requirements).
-
-d. ERA plays prompt sound ""Tone sound BEEP BEEP"", meanwhile, ERA control the LED light flashes at 1Hz and attempts to establish a voice call with the ERA operator. b&c&d needs to be completed within 1 second (according to GOST33464 requirements)
-
-e. ERA detected that the user had short pressed the E-Call button before entering the CALL PROCESS, ERA returns to ERA status and sends hw.EcallMute (MUTE_OUT) to IVI to cancel MUTE
-
-e. ERA detected that the user had short pressed the E-Call button before entering the CALL PROCESS, ERA returns to ERA status and send hw.EcallMute (MUTE-OUT) to IVI to cancel MUTE
-
-f. After the voice channel is connected, ERA sends DTMF information to the call center and establishes a call with the ERA operator.
-
-f. After the voice channel is connected, ERA sends DTMF information to the ERA operator and establishes a call with the ERA operator.
-
-g. After the phone is connected, enter the CALL ESTABLISHED state,
-
-h. After being connected, users can input voice through the microphone, and ERA drives the microphone through hw.ERAVoiceInput;
-
-Exit conditions (a|b):
-
-ERA detects that the user short-presses the E-CALL key and cancelates the E-CALL
-
-The E-CALL call ends;
-
-b. E-CALL is finished
-
+Users set the hotspot name and password in SWP, and IVI_IFT sends vehicle/{VIN}/hardware/interfaces/hotspotNameCommand and vehicle/{VIN}/hardware/interfaces/hotspotPasswordCommand to SGW.
+Users set hotspot name and password on the SWP, IVI_IFT send vehicle/{VIN}/hardware/interfaces/hotspotNameCommand and vehicle/{VIN}/hardware/interfaces/hotspotPasswordCommand to SGW.
+Execution output (a&b&c&d):
+After SGW changes the hotspot name and password, it feeds back vehicle/{VIN}/hardware/interfaces/hotspotNameValue and vehicle/{VIN}/hardware/interfaces/hotspotPasswordValue to IVI_IFT, which then displays them.
+After SGW changes the hotspot name and password, it provides feedback on vehicle/{VIN}/hardware/interfaces/hotspotNameValue and vehicle/{VIN}/hardware/interfaces/hotspotPasswordValue to IVI_IFT for display.
+IVI and SGW save the configured name and password;
+After changing the password, the previous device cannot be connected. After entering the new password, the connection can be successful.
+After the vehicle is powered off, IVI and SGW remember the hot spot name and password. If IVI memory state is inconsistent with SGW, SGW shall take priority
+Exit conditions/Exit conditions (a):
+The vehicle system is powered off.
+IVI system shutdown.
 Notes:
-
-1. After the call is over, ERA sends hw. EcallMute(MUTE_OUT) to cancel mute to IVI; ERA enters Callback and continues for cal.CallStandby(Default 20min, TBD), ERA enters ERA-normal state after timeout and
-"|"Postconditions：
-The driver is able to communicate with the emergency services via ERA-Glonass."|"Main Scenario:
-The ERA-Glonass initiates emergency service communication.
-During the emergency call, the safety audio system automatically mutes or lowers the volume of other audio sources within the vehicle, such as the radio, navigation prompts, or entertainment systems.
-The public safety answering point (PSAP) receives critical information about the situation, location, and the nature of the emergency from the In-vehicle system and occupants' answers.
-The communication continues until the PSAP determines that it is safe to end the call or until the situation is resolved.
-Once the emergency communication ends, the safety audio system restores the audio sources to their previous settings, or the driver can manually unmute the audio via in_2.
-Postconditions：
-The driver is able to communicate with the emergency services via ERA-Glonass."||"Trigger:
-The vehicle sensors detect a collision and activate the emergency communication feature.
-The driver manually presses in_19. SOS button (roof console)activate the emergency communication feature."|"Preconditions:
-The vehicle is in the Drive State (PRND)
-The vehicle is capable of communicating with emergency services (ERA-Glonass functional).
-The vehicle is involved in or witnesses an emergency, such as a collision or a medical issue, necessitating communication with emergency services."||||4
+1. The hotspot name can be a combination of Russian, English, and numbers. After entering, click Confirm to modify the personal name. IVI_IFT supports inputting up to cal.NameLength_Hotspot(Default,32byte,TBD) characters. When the maximum value is exceeded, IVI_IFT sends the video stream to SWP to remind the user that ""the maximum input characters have been exceeded"". The hotspot name does not support special characters and special symbols (except ordinary English and Russian characters, and ""_""). Minimum character limit: at least one character.
+The hotspot name can be a combination of Russian, English, and numbers. After entering, click confirm to modify the personal name. IVI-IFT supports up to cal.NameLength_Hotspot(Default,32byte,TBD), when the maximum value is exceeded, IVI_IFT will send a video stream to SWP and prompt the user ""the maximum input character has been exceeded"". The hotspot name does not support special characters or symbols (except for regular English and characters Russian, as well as ""_""). Minimum character limit: At least one character. 2. After the user sets the hotspot name and password, SGW needs to feed back the setting results to IVI within cal. HotspotSettingFeedbackTime (Default, 1s, TBD).
+After the user sets the hotspot name and password, SGW needs to feedback the setting results to IVI within cal. HotspotSettingFeedbackTime(Default,1s,TBD)."|"Scope: 
+SWP Actors:
+Driver 
+Owner Requirements:
+The hotspot name and password will be saved in the vehicle profile. 
+After changing the password, the previous device needs to enter the new password to reconnect. Tigger:
+NA "|||"Main Scenario:
+The user guides to the hotspot page out_2. SWP Android. 
+Click in_2. SWP Android the hotspot name or password to enter the modification page. 
+The user modifies the name or password and clicks 'save' in_2. SWP Android. "|"Goal:
+Users can modify the name and password of the vehicle hotspot according to their needs. "||||4
 30371|ERA Self-diagnosis|"[I-30371]  ERA Self-diagnosis
 Actors:
 ERA-Glonass system
@@ -253,7 +150,7 @@ Notes：
 ①If the ignition is off after the software downloading is complete, the ERA shall update the software image in non-volatile memory, and then perform a self-diagnosis cycle.
 
 ②If the ignition is on after the software downloading is complete, the ERA shall update the software image in non-volatile memory, and perform a self-diagnosis cycle after the ignition is turned off.
-"||||"Description:
+"|"Description:
 ERA self-diagnosis whether the system has a fault.Actors:
 ERA-Glonass systemComponents:
 ERA-Function logic:
@@ -267,174 +164,88 @@ Deactivation (Stoping, Cancelling)
 Additional InfoAdditional InfoDisplay:
 MalfunctionEraGlonass_SOSButton - Once a fault is detected, the RED LED of the SOS button will light upNotification:
 MalfunctionOfEraGlonass_SWP -  Notification about malfunction in self-diagnosis of Era GLONASS in SWP. Notification automatically disappears in 5 secs
-MalfunctionOfEraGlonass_MobileApp -  Notification about malfunction in self-diagnosis of Era GLONASS"|||||4
-28561|Setting Hotspot name & password|"[I-28561]  Setting Hotspot name & password
-Use-Case Title: ""Setting Hotspot name & password""
-Goal:
-Users can modify the name and password of the vehicle hotspot according to their needs. 
-Scope: 
-SWP 
-Tigger:
-NA 
-Actors:
-Driver 
-Owner 
-Precondition:
-IVI system startup out_2 SWP Android. 
-Main Scenario:
-The user guides to the hotspot page out_2. SWP Android. 
-Click in_2. SWP Android the hotspot name or password to enter the modification page. 
-The user modifies the name or password and clicks 'save' in_2. SWP Android. 
-Postcondition:
-The hotspot name or password will be modified successfully. 
-Requirements:
-The hotspot name and password will be saved in the vehicle profile. 
-After changing the password, the previous device needs to enter the new password to reconnect. "|"hotspot settings
-Functional Description
-Users can modify the name and password of the vehicle hotspot according to their needs. This function can only be used when the vehicle is in a stopped state.
-Enabling conditions (a&b&c):
-IVI system startup;
-User can operate SWP;
-IVI hotspot is enabled.
-Trigger conditions (a):
-Users set the hotspot name and password in SWP, and IVI_IFT sends vehicle/{VIN}/hardware/interfaces/hotspotNameCommand and vehicle/{VIN}/hardware/interfaces/hotspotPasswordCommand to SGW.
-Users set hotspot name and password on the SWP, IVI_IFT send vehicle/{VIN}/hardware/interfaces/hotspotNameCommand and vehicle/{VIN}/hardware/interfaces/hotspotPasswordCommand to SGW.
-Execution output (a&b&c&d):
-After SGW changes the hotspot name and password, it feeds back vehicle/{VIN}/hardware/interfaces/hotspotNameValue and vehicle/{VIN}/hardware/interfaces/hotspotPasswordValue to IVI_IFT, which then displays them.
-After SGW changes the hotspot name and password, it provides feedback on vehicle/{VIN}/hardware/interfaces/hotspotNameValue and vehicle/{VIN}/hardware/interfaces/hotspotPasswordValue to IVI_IFT for display.
-IVI and SGW save the configured name and password;
-After changing the password, the previous device cannot be connected. After entering the new password, the connection can be successful.
-After the vehicle is powered off, IVI and SGW remember the hot spot name and password. If IVI memory state is inconsistent with SGW, SGW shall take priority
-Exit conditions/Exit conditions (a):
-The vehicle system is powered off.
-IVI system shutdown.
-Notes:
-1. The hotspot name can be a combination of Russian, English, and numbers. After entering, click Confirm to modify the personal name. IVI_IFT supports inputting up to cal.NameLength_Hotspot(Default,32byte,TBD) characters. When the maximum value is exceeded, IVI_IFT sends the video stream to SWP to remind the user that ""the maximum input characters have been exceeded"". The hotspot name does not support special characters and special symbols (except ordinary English and Russian characters, and ""_""). Minimum character limit: at least one character.
-The hotspot name can be a combination of Russian, English, and numbers. After entering, click confirm to modify the personal name. IVI-IFT supports up to cal.NameLength_Hotspot(Default,32byte,TBD), when the maximum value is exceeded, IVI_IFT will send a video stream to SWP and prompt the user ""the maximum input character has been exceeded"". The hotspot name does not support special characters or symbols (except for regular English and characters Russian, as well as ""_""). Minimum character limit: At least one character. 2. After the user sets the hotspot name and password, SGW needs to feed back the setting results to IVI within cal. HotspotSettingFeedbackTime (Default, 1s, TBD).
-After the user sets the hotspot name and password, SGW needs to feedback the setting results to IVI within cal. HotspotSettingFeedbackTime(Default,1s,TBD)."||"Main Scenario:
-The user guides to the hotspot page out_2. SWP Android. 
-Click in_2. SWP Android the hotspot name or password to enter the modification page. 
-The user modifies the name or password and clicks 'save' in_2. SWP Android. "|"Goal:
-Users can modify the name and password of the vehicle hotspot according to their needs. "|"Scope: 
-SWP Actors:
-Driver 
-Owner Requirements:
-The hotspot name and password will be saved in the vehicle profile. 
-After changing the password, the previous device needs to enter the new password to reconnect. Tigger:
-NA "|||||4
-11467|Revoke access to the vehicle from a driver or passenger|"[I-11467]  Revoke access to the vehicle from a driver or passenger
-
-Goal:
-Enable the Owner to quickly revoke access from other drivers/profiles to the vehicle through the ATOM application.
-Preconditions:
-Alice - the owner or the driver with to grant access to the car
-Alice decides to revoke previously granted access.
-Main Scenario:
-Alice opens the ATOM application on his in_5. Smart phone and goes to the section “Access Management”
-The system displayed the list with active drivers/passengers
-The owner selects the ""Revoke access"" option for delete the specific profile.
-When connecting to the car via the application, the access recorded on it is automatically deleted.
-All accesses previously generated by this profile are also deleted. (if applicable)
-Rights were given, settings are saved in the user profile
-Alternative scenario:
-In case the car does not have a direct connection with the application, the owner can issue a command to remove access.
-Access will be removed the next time the car connects to the internet.
-If the vehicle is in motion, access will be announced after the vehicle stops(parking mode).
-Postconditions:
-Access has been successfully revoked
-All profile-related access is also removed, ensuring security.
-A push notification appears on the mobile screen informing the owner that the vehicle user's access was revoked successfully. It can be closed manually or automatically after 5 seconds.
-"|"Users can remotely control the DK deletion through the ATOM app, and the DK list is updated after deletion.
-Enabling conditions (a & b):
-There is at least one DK;
-Vehicle mode is not End-Of-Life mode, and other modes are applicable.
-Trigger conditions (a | b):
-User Services sends a request to delete a remote DK;
-User Services send a request of deleting remote DK, 
-User Services sends a list of rename DK remotely,
-vehicle/{VIN}/hardware/access/Remote/ Remote_DKListRename2;
-Execution output:
-Basic event flow: (a & b)
-SGW receives User Services, delete the corresponding digital key information;
-SGW received request from User Services, delete the information of the corresponding DK;
-SGW sends digital key deletion status to Connectivity Services;
-SGW send status of DK deletion to Connectivity Services, VEHICLE_RemoteDKDeleteState;
-Optional event flow: (a&b&c)
-SGW receives the renamed digital key list from User Services;
-SGW received rename from User Services, list DK;
-SGW stores the renamed digital key list;
-SGW stored rename from User Services, list DK;
-SGW stores the successful feedback of User Services rename status;
-
-ATOM App receives the DK rename list state from Connectivity Services, if it is successful, ATOM App displays the updated name else back to the old name.
-"|"Postconditions:
-Access has been successfully revoked
-All profile-related access is also removed, ensuring security.
-A push notification appears on the mobile screen informing the owner that the vehicle user's access was revoked successfully. It can be closed manually or automatically after 5 seconds.
-"|"Main Scenario:
-Alice opens the ATOM application on his in_5. Smart phone and goes to the section “Access Management”
-The system displayed the list with active drivers/passengers
-The owner selects the ""Revoke access"" option for delete the specific profile.
-When connecting to the car via the application, the access recorded on it is automatically deleted.
-All accesses previously generated by this profile are also deleted. (if applicable)
-Rights were given, settings are saved in the user profile"|"Goal:
-Enable the Owner to quickly revoke access from other drivers/profiles to the vehicle through the ATOM application."||"Preconditions:
-Alice - the owner or the driver with to grant access to the car
-Alice decides to revoke previously granted access."||||5
-31523|Adding Internet Radio to Favorites List|"[I-31523]  Adding Internet Radio to Favorites List
+MalfunctionOfEraGlonass_MobileApp -  Notification about malfunction in self-diagnosis of Era GLONASS"||||||||4
+25957|Mute/unmute the FM Radio playback|"[I-25957]  Mute/unmute the FM Radio playback
 Description: 
-Use Case: Adding Internet Radio to Favorites List
-
-Goal: User wants to add favorites internet radio to enlighten the access to his favorite music/info
-
-Actors:
-Car User 
-IVI 
 Preconditions:
-User in in the Internet Radio list 
-Triggers:
-User selects to add the Radio via in_2/in_5 
+User is playing FM Radio 
 Main Scenario:
-The user press on the UI interface ""Add to Favorites"" icon 
+​​​User clicks on Mute/Unmute button via in_2/in_5 
+FM Radio sound output is Muted/Unmuted 
 Postconditions:
-The selected internet radio station is added to the user's personalized favorites list. 
-Requirenments:
-User must be able to navigate to the Favourite list from Internet Radio interface 
-User must be able to 'Remove from favorites' the Internet Radio station by pressing the same interface icon "|"Favorite Song operation
+The user Mutes/Unmutes the FM Radio playback 
+Goal: ""Users are able to mute/unmute the FM Radio playback"""|"Mute or pause function
 Functional Description
-Users can set local music as favorites and view corresponding song information. This function is applicable to USB music, and online music. It can only be used when the vehicle is stopped through SWP operation.
+When playing online radio stations, pause operation can be performed, and live programs can be muted. It can only be used when the vehicle is stopped through SWP operation.
+Enabling conditions (a & b);
+IVI system startup;
+User operable display screen.
+Trigger conditions (a | b | c):
+When a valid network radio station is running, click the mute / pause soft button.
+When a valid network radio station is running, mute / pause is controlled by the Switches hard button (Switches_L_Accept_Cmd (vehicle / cabin / steering-wheel / left-area / accept / command) = 0x1: Press).
+When an effective network radio station is running, use the Switches hard keys to control mute/pause (Switches_L_Accept_Cmd (vehicle/cabin/steering-wheel/left-area/accept/command) = 0x1: Press).
+When an effective network radio station is running, mute/pause is controlled through voice function.
+Execution output (a&b&c):
+When the network radio is playing, click the mute/pause soft button or use the Switches hard keys or voice control to mute or pause the network radio.
+When the network radio is playing, click the mute/pause soft button or use the Switches hard keys or voice control to mute or pause the network radio.
+When the network radio is muted or paused, click the mute/pause soft button or use the Switches hard keys or voice control to play the network radio.
+When the network radio is muted or paused, click the mute/pause soft button or use the Switches hard keys or voice control to play the network radio.
+When the network radio is muted, the system shuts down, and the radio automatically plays sound the next time it is powered on.
+Exit conditions (a|b)
+System shutdown;
+IVI system shutdown;
+Switch audio source.
+The SWP network radio page provides mute/pause soft buttons.
+The Switches provide a mute/pause hard keys.
+The voice recognition system can recognize mute/pause voice commands.
+The SWP network radio page provides mute/pause soft buttons.
+The Switches provide a mute/pause hard keys.
+The voice recognition system can recognize mute/pause voice commands."|Description: |"Postconditions:
+The user Mutes/Unmutes the FM Radio playback "|"Preconditions:
+User is playing FM Radio "|"Main Scenario:
+​​​User clicks on Mute/Unmute button via in_2/in_5 
+FM Radio sound output is Muted/Unmuted "|"Goal: ""Users are able to mute/unmute the FM Radio playback"""||||3
+8800|Receiving Call Notifications|"[I-8800]  Receiving Call Notifications
+Preconditions
+Entertainment system is ready. in_2 
+The driver's smartphone is connected to the vehicle's system via Bluetooth (in_32)[I-6323] Pairing a Mobile Phone. 
+Main Scenario:
+An incoming call is received on the driver's phone (in_5). 
+The caller's information (name from the contact list or phone number) is displayed on the SWP Android (out_2). 
+The interior ambient light (out_12) changes color to signal the incoming call. 
+An incoming call sound is played through the vehicle's speakers (out_24). 
+The driver can accept or reject the call using the front buttons on the steering wheel (in_10) or via the voice assistant command (in_24). 
+Postconditions:
+If the call is accepted, the interior ambient light changes color, the call status is displayed on the HUD and SWP Android, and the vehicle's microphone (in_24) and speakers out_24 are used for the call. 
+If the call is rejected, the interior ambient light returns to its original color, the call notification is removed from the HUD and SWP Android, and a call rejection sound is played via out_24. 
+Alternative Scenario:
+If the caller's number is not saved in the smartphone's contacts, the HUD and SWP Android display the phone number or ""Unknown"" if the number is hidden. 
+If the music is played on IVI via out_24, then the music gets quieter to allow the incoming call sound to be heard at a comfortable level. "|"Receiving Call Notifications
+Functional Description:
+When a mobile phone calls, SWP pops up a Bluetooth phone dialog box, if the number has been saved in the phone address book, display the call number and name; if not saved in the phone address book, only display the call number, and play the ring tone of the call;
 Enabling conditions (a & b):
 IVI system startup;
-Users can operate the SWP;
+Bluetooth phone connected.
 Trigger conditions (a):
-Enter the music player and select USB music or network music. Click on the ""Favorite Songs"" or ""View Song Details"" soft button.
-Execution output (a & b & c & d & e):
-After setting a song as favorite, you can find the song in the favorites list. The favorite list is a collection of radio, USB music, and online music.
-After setting a song as a favorite, you can find it in the favorite list. The favorite list is a collection of radio, USB music, and online music.
-A song that has been set as a favorite can be unset. After cancellation, the song disappears from the favorite list.
-The favorite setting is memorized after the car is powered off.
-Store favorites list before IVI powered off.
-View the song information without affecting the playback/pause status, and display the corresponding song information, including the song name, performer, and album name.
-If the song information fails to be obtained, only the song name is displayed.
-If obtaining song information fails, only the song name will be displayed.
-If the USB drive is unplugged or a song is deleted from the USB drive, the song in the favorites list will be grayed out.
-Exit conditions (a)
-Display screen off;
-IVI shutdown;
-SWP music player local music playback page, network music playback page, providing software buttons for collecting and viewing song details.
-SWP music player local music playback page, network music playback page, providing software buttons for collecting and viewing song details.
-The SWP music player has a music collection interface and provides a software button to cancel the collection."|"Postconditions:
-The selected internet radio station is added to the user's personalized favorites list. "|"Main Scenario:
-The user press on the UI interface ""Add to Favorites"" icon "|"Goal: User wants to add favorites internet radio to enlighten the access to his favorite music/info
-"|"Description: Actors:
-Car User 
-IVI Triggers:
-User selects to add the Radio via in_2/in_5 Use Case: Adding Internet Radio to Favorites List
-Triggers:
-User selects to add the Radio via in_2/in_5 Requirenments:
-User must be able to navigate to the Favourite list from Internet Radio interface 
-User must be able to 'Remove from favorites' the Internet Radio station by pressing the same interface icon "|"Preconditions:
-User in in the Internet Radio list "||||4
+Incoming Phone Call.
+Execution output ((a|b) & c):
+SWP pops up a Bluetooth phone dialog box, displaying the call number and name (if the number has been saved in the phone address book). IVI automatically activates and switches to the mobile audio channel, and plays the incoming ringtone (if the incoming ringtone input of the mobile phone can be received (depending on the mobile phone), use the incoming call ringtone provided by the mobile phone, otherwise use the IVI default ringtone).
+The Bluetooth phone dialog box pops up on the SWP, displaying the incoming number and name (if the number has been saved in the phonebook), IVI automatically activates and switches to the mobile audio channel, and playing the incoming ringtone (Front speakers). (If the incoming ringtone input of the mobile phone can be received (depending on the phone), use the incoming call ringtone provided by the phone, otherwise use the IVI default ringtone)；
+IVI_IFT sends the incoming call status signal vehicle/cabin/lights/atmosphere/ambient-callin/req.
+Exit conditions/Exit conditions (a|b|c|d): Answer the incoming call.
+Accept the call End of incoming call.
+Reject the call. Miss the call. (The other party hung up the call or the call timed out)
+Miss the call (because CO stopped outcoming call or because of timeout).
+BT connection loss or BT switch OFF."||"Postconditions:
+If the call is accepted, the interior ambient light changes color, the call status is displayed on the HUD and SWP Android, and the vehicle's microphone (in_24) and speakers out_24 are used for the call. 
+If the call is rejected, the interior ambient light returns to its original color, the call notification is removed from the HUD and SWP Android, and a call rejection sound is played via out_24. "|"Preconditions
+Entertainment system is ready. in_2 
+The driver's smartphone is connected to the vehicle's system via Bluetooth (in_32)[I-6323] Pairing a Mobile Phone. "|"Main Scenario:
+An incoming call is received on the driver's phone (in_5). 
+The caller's information (name from the contact list or phone number) is displayed on the SWP Android (out_2). 
+The interior ambient light (out_12) changes color to signal the incoming call. 
+An incoming call sound is played through the vehicle's speakers (out_24). 
+The driver can accept or reject the call using the front buttons on the steering wheel (in_10) or via the voice assistant command (in_24). "|||||4
 26160|Filtering the internet radio stations|"[I-26160]  Filtering the internet radio stations
 Description: 
 Goal: 'Reorder the Internet Radio stations by the attributes'
@@ -454,61 +265,106 @@ Postconditions:
 out_2/out_5 displays the internet radio stations compliant with the filter 
 Requirenments:
 The action is displayed on the touchpoint from which this action is performed 
-"||"Postconditions:
-out_2/out_5 displays the internet radio stations compliant with the filter "|"Main Scenario:
-out_2/out_5 displays the list of stations "|"Goal: 'Reorder the Internet Radio stations by the attributes'
-"|"Description: Requirenments:
+"||"Description: Requirenments:
 The action is displayed on the touchpoint from which this action is performed 
-"|"Preconditions:
+"|"Postconditions:
+out_2/out_5 displays the internet radio stations compliant with the filter "|"Preconditions:
 ATOM is connected to the internet 
 User has selected Internet Radio playback 
 Smartphone in_5 Bluetooth switched on 
-Smartphone in_5 paired with Vehicle "||||1
-8604|Source selection for Media output|"[I-8604]  Source selection for Media output
-Description: 
-Goal: Enable user selection of multimedia audio sources.
-Context: Atom car is able to playback media from a list of sources like am/FM radio, internet radio, USB storage, internal SD card, and other devices connected via Bluetooth. Atom car users shall be able to select a source for media playback.
-Scope: This use case is about selecting the source, not browsing for content within the source. Assuming that user is inside the car, the car is ready to playback media from any aspect.
-Actors: User.
-
+Smartphone in_5 paired with Vehicle "|"Main Scenario:
+out_2/out_5 displays the list of stations "|"Goal: 'Reorder the Internet Radio stations by the attributes'
+"||||1
+8692|Emergency Service Communication (ERA-Glonass)|"[I-8692]  Emergency Service Communication (ERA-Glonass)
 Preconditions:
-ATOM is on 
-in_5. Smartphone is paired with the car 
+The vehicle is in the Drive State (PRND)
+The vehicle is capable of communicating with emergency services (ERA-Glonass functional).
+The vehicle is involved in or witnesses an emergency, such as a collision or a medical issue, necessitating communication with emergency services.
+Trigger:
+The vehicle sensors detect a collision and activate the emergency communication feature.
+The driver manually presses in_19. SOS button (roof console)activate the emergency communication feature.
 Main Scenario:
-User selects the ""Multimedia"" via in_5 or in_2/ 
-out_2/out_5 displays the available audio sources: 
-Internet Radio 
-FM Radio 
-USB 
-Internal SD card 
-Bluetooth 
-Postconditions:
-out_2/out_5 shows available media sources 
-Requirements:
-The action is displayed on the touchpoint from which this action is performed "|"Switch music sources
+The ERA-Glonass initiates emergency service communication.
+During the emergency call, the safety audio system automatically mutes or lowers the volume of other audio sources within the vehicle, such as the radio, navigation prompts, or entertainment systems.
+The public safety answering point (PSAP) receives critical information about the situation, location, and the nature of the emergency from the In-vehicle system and occupants' answers.
+The communication continues until the PSAP determines that it is safe to end the call or until the situation is resolved.
+Once the emergency communication ends, the safety audio system restores the audio sources to their previous settings, or the driver can manually unmute the audio via in_2.
+Postconditions：
+The driver is able to communicate with the emergency services via ERA-Glonass.
+Alternative Scenarios:
+A. ERA-Glonass Malfunction
+There is a notification display on out_2, out_5 when the ERA-GLONASS has an error.
+If ERA can not be activated, the driver or passengers may need to use personal mobile devices in_5.Smartphone or other means to contact emergency services.
+If the driver does not respond to the emergency service communication attempts due to system malfunction or physical reasons, ERA will still attempt the call and locate the vehicle, lights on out_19. SOS button (roof console) and 16. Turn lamps (right & left) \ Warning at the same time.
+
+"|"Manual dialing E-CALL
 Functional Description
-Users can switch music sources through the SWP or voice. It can only be used when the vehicle is stopped through SWP operation.
+
+The user presses the SOS button to actively trigger E-Call. ERA uploads vehicle information data to the ERA operator and uses ERA's built-in communication module to make an emergency call to the 112.
+
 Enabling conditions (a & b):
-IVI system startup;
-Users can operate the SWP.
-Trigger conditions (a | b):
-The user clicks on the SWP to select the corresponding audio source.
-The user wakes up the voice assistant and switches the audio source through voice commands.
-Execution output (a):
-The system switches the corresponding audio source.
-The system switches the corresponding audio source.
-Exit conditions (a):
-IVI system shutdown;
-The SWP can switch between network/USB/Bluetooth music interfaces.
-The voice recognition system can recognize audio source switching commands.
-The SWP can switch between network/USB/Bluetooth music interfaces.
-The voice recognition system can recognize audio source switching commands."|"Postconditions:
-out_2/out_5 shows available media sources "|"Main Scenario:
-User selects the ""Multimedia"" via in_5 or in_2/ "|Goal: Enable user selection of multimedia audio sources.|"Description: Scope: This use case is about selecting the source, not browsing for content within the source. Assuming that user is inside the car, the car is ready to playback media from any aspect.Actors: User.
-Requirements:
-The action is displayed on the touchpoint from which this action is performed "|"Preconditions:
-ATOM is on 
-in_5. Smartphone is paired with the car "||||2
+
+a. ERA is in the ERA state
+
+b. detected the hw.KL15ON (Power status is KL15 ON)
+
+Trigger conditions (a):
+
+a. The user long presses the E-CALL button
+
+Execution output output（a&b&c&d&e&f&g&h）：
+
+a. ERA detects the hw.EcalIKey signal and ERA starts tmr. EcallLongPress;ERA enters theECALL MODE-CALL CONFIRM state when cal.EcallLongPress（Default : 2s TBD）＜tmr.EcallLongPress＜cal.EcallLongPress（Default : 5s TBD）;
+
+b. ERA sends hw.EcallMute signal（MUTE_OUT）to IVI；
+
+b. ERA sends a hw.EcallMute signal（MUTE_OUT） to IVI;
+
+c. ERA drives speaker to play prompt sound. ③ : “Tone sound BEEP BEEP” through the hw.ERASoundOutput, and ERA sends hw.EcallIndicator to control the LED light flashes (Refer to the Ecall switch Indicator Drive section), prompting the user to cancel the call; ERA sends MSD message to the ERA operator; ERA needs to determine the network condition. When the network cannot send MSD, SMS is used to send MSD;
+
+c. ERA drives speaker to play prompt sound. ③ : “Tone sound BEEP BEEP” through the hw.ERASoundOutput, and ERA sends hw.EcallIndicator to control the LED light flashes (Refer to the Ecall switch Indicator Drive section), prompting the user to cancel the call; ERA sends MSD message to the ERA operator; ERA needs to determine the network condition. When the network cannot send MSD, SMS is used to send MSD;
+
+d.ERA plays the prompt tone ""Tone sound BEEP BEEP"", the LED light flashes at 1Hz, and tries to establish a voice call with the ERA operator. b&c&d need to be completed within 1s (according to GOST_33464 requirements).
+
+d. ERA plays prompt sound ""Tone sound BEEP BEEP"", meanwhile, ERA control the LED light flashes at 1Hz and attempts to establish a voice call with the ERA operator. b&c&d needs to be completed within 1 second (according to GOST33464 requirements)
+
+e. ERA detected that the user had short pressed the E-Call button before entering the CALL PROCESS, ERA returns to ERA status and sends hw.EcallMute (MUTE_OUT) to IVI to cancel MUTE
+
+e. ERA detected that the user had short pressed the E-Call button before entering the CALL PROCESS, ERA returns to ERA status and send hw.EcallMute (MUTE-OUT) to IVI to cancel MUTE
+
+f. After the voice channel is connected, ERA sends DTMF information to the call center and establishes a call with the ERA operator.
+
+f. After the voice channel is connected, ERA sends DTMF information to the ERA operator and establishes a call with the ERA operator.
+
+g. After the phone is connected, enter the CALL ESTABLISHED state,
+
+h. After being connected, users can input voice through the microphone, and ERA drives the microphone through hw.ERAVoiceInput;
+
+Exit conditions (a|b):
+
+ERA detects that the user short-presses the E-CALL key and cancelates the E-CALL
+
+The E-CALL call ends;
+
+b. E-CALL is finished
+
+Notes:
+
+1. After the call is over, ERA sends hw. EcallMute(MUTE_OUT) to cancel mute to IVI; ERA enters Callback and continues for cal.CallStandby(Default 20min, TBD), ERA enters ERA-normal state after timeout and
+"|"Trigger:
+The vehicle sensors detect a collision and activate the emergency communication feature.
+The driver manually presses in_19. SOS button (roof console)activate the emergency communication feature."|"Postconditions：
+The driver is able to communicate with the emergency services via ERA-Glonass."|"Preconditions:
+The vehicle is in the Drive State (PRND)
+The vehicle is capable of communicating with emergency services (ERA-Glonass functional).
+The vehicle is involved in or witnesses an emergency, such as a collision or a medical issue, necessitating communication with emergency services."|"Main Scenario:
+The ERA-Glonass initiates emergency service communication.
+During the emergency call, the safety audio system automatically mutes or lowers the volume of other audio sources within the vehicle, such as the radio, navigation prompts, or entertainment systems.
+The public safety answering point (PSAP) receives critical information about the situation, location, and the nature of the emergency from the In-vehicle system and occupants' answers.
+The communication continues until the PSAP determines that it is safe to end the call or until the situation is resolved.
+Once the emergency communication ends, the safety audio system restores the audio sources to their previous settings, or the driver can manually unmute the audio via in_2.
+Postconditions：
+The driver is able to communicate with the emergency services via ERA-Glonass."|||||4
 26771|Turn on and off hotspot via VA|"[I-26771]  Turn on and off hotspot via VA
 
 Description: 
@@ -560,12 +416,7 @@ IVI_IFT sends vehicle/{VIN}/hardware/interfaces/hotspotCommand signal.
 IVI_IFT receives hotspot status signal vehicle/{VIN}/hardware/interfaces/hotspotState
 and displays hotspot status on the hotspot control page.
 Exit conditions (a):
-IVI system shutdown;"||"Main scenario:
-The user asks in_24 Voice. Microphone to turn on the hotspot. 
-The out_2 SWP Android activates the Hotspot. 
-VA will inform the user about the activation out_24 Voice. Dynamic. 
-out_2 SWP Android shows notification with button ""Show Hotspot Settings"". By сlicking in_2 SWP Android on ""Show Hotspot Settings"" the access point settings section for the user will open (The notification will automatically disappear in 5 seconds without clicking the button). "|"Goal: 
-Users can turn on or off the vehicle hotspot according to their needs via the VA. "|"Description: Scope:
+IVI system shutdown;"|"Description: Scope:
 SWP Android 
 VA 
 Smartphone Actors:
@@ -575,88 +426,237 @@ Passenger Requirements:
 The hotspot switch, name, password are the same level menu. 
 The hotspot is turned off by default on every power-on. 
 If no devices connect after the Hotspot turn on within 10 mins, it will automatically turn off. Tigger:
-The user controls the hotspot switch via in_24 Voice. Microphone. "|||||4
-25957|Mute/unmute the FM Radio playback|"[I-25957]  Mute/unmute the FM Radio playback
-Description: 
+The user controls the hotspot switch via in_24 Voice. Microphone. "|||"Main scenario:
+The user asks in_24 Voice. Microphone to turn on the hotspot. 
+The out_2 SWP Android activates the Hotspot. 
+VA will inform the user about the activation out_24 Voice. Dynamic. 
+out_2 SWP Android shows notification with button ""Show Hotspot Settings"". By сlicking in_2 SWP Android on ""Show Hotspot Settings"" the access point settings section for the user will open (The notification will automatically disappear in 5 seconds without clicking the button). "|"Goal: 
+Users can turn on or off the vehicle hotspot according to their needs via the VA. "||||4
+6583|Driver initiate a call through SWP|"[I-6583]  Driver initiate a call through SWP
 Preconditions:
-User is playing FM Radio 
+The IVI is on in_2 
+The vehicle can be shifted to any of the PRND drive modes. 
+The driver's smartphone is connected to the vehicle's system via Bluetooth (in_32).[I-6323] Pairing a Mobile Phone 
+The driver has granted necessary permissions for phone information, including contacts and recent calls[I-6326] Import data from mobile phone, SMS, and supported messenger apps on in_5. 
 Main Scenario:
-​​​User clicks on Mute/Unmute button via in_2/in_5 
-FM Radio sound output is Muted/Unmuted 
+The driver navigates to the 'Calls' option on the SWP Android (out_2), displaying the most recent calls. 
+The driver initiates a call by selecting a number from the recent calls list. 
+The interior ambient light (out_12) changes color [blue, static display] to signal the outgoing call. 
+The call status is displayed on the HUD (out_3) and SWP Android (out_2). 
+The vehicle's microphone (in_24) and speakers (out_24) are used for the call. 
 Postconditions:
-The user Mutes/Unmutes the FM Radio playback 
-Goal: ""Users are able to mute/unmute the FM Radio playback"""|"Mute or pause function
-Functional Description
-When playing online radio stations, pause operation can be performed, and live programs can be muted. It can only be used when the vehicle is stopped through SWP operation.
-Enabling conditions (a & b);
-IVI system startup;
-User operable display screen.
-Trigger conditions (a | b | c):
-When a valid network radio station is running, click the mute / pause soft button.
-When a valid network radio station is running, mute / pause is controlled by the Switches hard button (Switches_L_Accept_Cmd (vehicle / cabin / steering-wheel / left-area / accept / command) = 0x1: Press).
-When an effective network radio station is running, use the Switches hard keys to control mute/pause (Switches_L_Accept_Cmd (vehicle/cabin/steering-wheel/left-area/accept/command) = 0x1: Press).
-When an effective network radio station is running, mute/pause is controlled through voice function.
-Execution output (a&b&c):
-When the network radio is playing, click the mute/pause soft button or use the Switches hard keys or voice control to mute or pause the network radio.
-When the network radio is playing, click the mute/pause soft button or use the Switches hard keys or voice control to mute or pause the network radio.
-When the network radio is muted or paused, click the mute/pause soft button or use the Switches hard keys or voice control to play the network radio.
-When the network radio is muted or paused, click the mute/pause soft button or use the Switches hard keys or voice control to play the network radio.
-When the network radio is muted, the system shuts down, and the radio automatically plays sound the next time it is powered on.
-Exit conditions (a|b)
-System shutdown;
-IVI system shutdown;
-Switch audio source.
-The SWP network radio page provides mute/pause soft buttons.
-The Switches provide a mute/pause hard keys.
-The voice recognition system can recognize mute/pause voice commands.
-The SWP network radio page provides mute/pause soft buttons.
-The Switches provide a mute/pause hard keys.
-The voice recognition system can recognize mute/pause voice commands."|"Postconditions:
-The user Mutes/Unmutes the FM Radio playback "|"Main Scenario:
-​​​User clicks on Mute/Unmute button via in_2/in_5 
-FM Radio sound output is Muted/Unmuted "|"Goal: ""Users are able to mute/unmute the FM Radio playback"""|Description: |"Preconditions:
-User is playing FM Radio "||||3
-8800|Receiving Call Notifications|"[I-8800]  Receiving Call Notifications
-Preconditions
-Entertainment system is ready. in_2 
-The driver's smartphone is connected to the vehicle's system via Bluetooth (in_32)[I-6323] Pairing a Mobile Phone. 
-Main Scenario:
-An incoming call is received on the driver's phone (in_5). 
-The caller's information (name from the contact list or phone number) is displayed on the SWP Android (out_2). 
-The interior ambient light (out_12) changes color to signal the incoming call. 
-An incoming call sound is played through the vehicle's speakers (out_24). 
-The driver can accept or reject the call using the front buttons on the steering wheel (in_10) or via the voice assistant command (in_24). 
-Postconditions:
-If the call is accepted, the interior ambient light changes color, the call status is displayed on the HUD and SWP Android, and the vehicle's microphone (in_24) and speakers out_24 are used for the call. 
-If the call is rejected, the interior ambient light returns to its original color, the call notification is removed from the HUD and SWP Android, and a call rejection sound is played via out_24. 
-Alternative Scenario:
-If the caller's number is not saved in the smartphone's contacts, the HUD and SWP Android display the phone number or ""Unknown"" if the number is hidden. 
-If the music is played on IVI via out_24, then the music gets quieter to allow the incoming call sound to be heard at a comfortable level. "|"Receiving Call Notifications
+If the call is initiated successfully, the SWP Android (out_2) displays an active call interface. 
+The driver is able to use the hands-free phone functionality on the SWP Android (out_2). 
+Alternative Scenario A:
+The driver activates the voice assistant (in_24) and instructs it to place a call to a contact from the contact list in a supported messenger or a specific number. 
+By default without the driver specifying which messenger to call through, the call is placed via the phone. If there is no name in the contact list of the messenger, the voice assistant says that to the driver and suggests placing a call via the phone. 
+The rest of the steps follow as in the main scenario. 
+Alternative Scenario B:
+The driver navigates to the 'Calls' option on the SWP Android (out_2). If the recent calls list is empty, a message stating ""No Recent Calls"" is displayed. 
+The rest of the steps follow as in the main scenario. 
+Alternative Scenario C:
+If GSM network is not available, an error message will be shown on out_2, prompting to recall. "|"Make a call (B sample)
 Functional Description:
-When a mobile phone calls, SWP pops up a Bluetooth phone dialog box, if the number has been saved in the phone address book, display the call number and name; if not saved in the phone address book, only display the call number, and play the ring tone of the call;
+Users can dial through IVI and make phone calls. Only when the vehicle is stopped can calls be made through SWP.
+1. Enabling conditions (a&b&c):
+a. IVI system startup;
+b. User can operate SWP;
+c. Mobile Bluetooth connected.
+2. Trigger conditions (a|b|c|d|e|f):
+a. Toggledialpad via SWP to make a call, if the driver doesn't have this number in contacts,Enter the phone number on the dialpad to make a call.
+b. Make a call through voice commands;
+c. Make a call through the mobile phone.
+Make a phone call. Trigger a call via connected phone.
+d. Toggle 'Call' menu option (where driver can see recent calls) via SWP to make a call;
+e. Driver select contact for calling in synchronized phonebook via SWP;
+f. IVI stores and displays the phone number of the roadside assistance hotline in advance, and users click on SWP to call the roadside assistance hotline;
+3. Execution output (a&b&c&d&e&f&g):
+a. The dialpad interface has a numeric keyboard and dialing software buttons;
+b. After dialing, click the dial soft button to enter the call interface, and the phone call is dialed;
+After entering a number on the phone, the phone is dialed. dialpad, click the dialing software button to enter the calling interface, and the mobile phone will make a call;
+c. When the dialed number is not answered, click the hang-up soft button to interrupt the number dialing.
+When the dialed number is not answered, you can click the hang up soft button to interrupt the number call.
+d. After the call is dialed, IVI activates and switches the audio channel to the Bluetooth phone, and IVI synchronizes call operation with smartphone;
+IVI automatically activates and switches to the mobile audio channel.
+e. During the call, display the call status through SWP;
+f. Driver inputs numbers in a tone mode during the call via SWP;
+g. After the user clicks to make a roadside assistance hotline call, IVI dials the number of the roadside assistance hotline call through their mobile phone;
+4. Exit conditions (a|b|c|d):
+a. IVI system shutdown;
+b. Bluetooth disconnected.
+c. User stopped call.
+d. The other party hung up the phone.
+Notes:
+If the Bluetooth phone is not connected, the user will receive a text prompt on the SWP Bluetooth phone page saying ""No paired smartphone"" when opening the phone application;"||"Postconditions:
+If the call is initiated successfully, the SWP Android (out_2) displays an active call interface. 
+The driver is able to use the hands-free phone functionality on the SWP Android (out_2). "|"Preconditions:
+The IVI is on in_2 
+The vehicle can be shifted to any of the PRND drive modes. 
+The driver's smartphone is connected to the vehicle's system via Bluetooth (in_32).[I-6323] Pairing a Mobile Phone 
+The driver has granted necessary permissions for phone information, including contacts and recent calls[I-6326] Import data from mobile phone, SMS, and supported messenger apps on in_5. "|"Main Scenario:
+The driver navigates to the 'Calls' option on the SWP Android (out_2), displaying the most recent calls. 
+The driver initiates a call by selecting a number from the recent calls list. 
+The interior ambient light (out_12) changes color [blue, static display] to signal the outgoing call. 
+The call status is displayed on the HUD (out_3) and SWP Android (out_2). 
+The vehicle's microphone (in_24) and speakers (out_24) are used for the call. "|||||2
+11467|Revoke access to the vehicle from a driver or passenger|"[I-11467]  Revoke access to the vehicle from a driver or passenger
+
+Goal:
+Enable the Owner to quickly revoke access from other drivers/profiles to the vehicle through the ATOM application.
+Preconditions:
+Alice - the owner or the driver with to grant access to the car
+Alice decides to revoke previously granted access.
+Main Scenario:
+Alice opens the ATOM application on his in_5. Smart phone and goes to the section “Access Management”
+The system displayed the list with active drivers/passengers
+The owner selects the ""Revoke access"" option for delete the specific profile.
+When connecting to the car via the application, the access recorded on it is automatically deleted.
+All accesses previously generated by this profile are also deleted. (if applicable)
+Rights were given, settings are saved in the user profile
+Alternative scenario:
+In case the car does not have a direct connection with the application, the owner can issue a command to remove access.
+Access will be removed the next time the car connects to the internet.
+If the vehicle is in motion, access will be announced after the vehicle stops(parking mode).
+Postconditions:
+Access has been successfully revoked
+All profile-related access is also removed, ensuring security.
+A push notification appears on the mobile screen informing the owner that the vehicle user's access was revoked successfully. It can be closed manually or automatically after 5 seconds.
+"|"Users can remotely control the DK deletion through the ATOM app, and the DK list is updated after deletion.
+Enabling conditions (a & b):
+There is at least one DK;
+Vehicle mode is not End-Of-Life mode, and other modes are applicable.
+Trigger conditions (a | b):
+User Services sends a request to delete a remote DK;
+User Services send a request of deleting remote DK, 
+User Services sends a list of rename DK remotely,
+vehicle/{VIN}/hardware/access/Remote/ Remote_DKListRename2;
+Execution output:
+Basic event flow: (a & b)
+SGW receives User Services, delete the corresponding digital key information;
+SGW received request from User Services, delete the information of the corresponding DK;
+SGW sends digital key deletion status to Connectivity Services;
+SGW send status of DK deletion to Connectivity Services, VEHICLE_RemoteDKDeleteState;
+Optional event flow: (a&b&c)
+SGW receives the renamed digital key list from User Services;
+SGW received rename from User Services, list DK;
+SGW stores the renamed digital key list;
+SGW stored rename from User Services, list DK;
+SGW stores the successful feedback of User Services rename status;
+
+ATOM App receives the DK rename list state from Connectivity Services, if it is successful, ATOM App displays the updated name else back to the old name.
+"||"Postconditions:
+Access has been successfully revoked
+All profile-related access is also removed, ensuring security.
+A push notification appears on the mobile screen informing the owner that the vehicle user's access was revoked successfully. It can be closed manually or automatically after 5 seconds.
+"|"Preconditions:
+Alice - the owner or the driver with to grant access to the car
+Alice decides to revoke previously granted access."|"Main Scenario:
+Alice opens the ATOM application on his in_5. Smart phone and goes to the section “Access Management”
+The system displayed the list with active drivers/passengers
+The owner selects the ""Revoke access"" option for delete the specific profile.
+When connecting to the car via the application, the access recorded on it is automatically deleted.
+All accesses previously generated by this profile are also deleted. (if applicable)
+Rights were given, settings are saved in the user profile"|"Goal:
+Enable the Owner to quickly revoke access from other drivers/profiles to the vehicle through the ATOM application."||||5
+31523|Adding Internet Radio to Favorites List|"[I-31523]  Adding Internet Radio to Favorites List
+Description: 
+Use Case: Adding Internet Radio to Favorites List
+
+Goal: User wants to add favorites internet radio to enlighten the access to his favorite music/info
+
+Actors:
+Car User 
+IVI 
+Preconditions:
+User in in the Internet Radio list 
+Triggers:
+User selects to add the Radio via in_2/in_5 
+Main Scenario:
+The user press on the UI interface ""Add to Favorites"" icon 
+Postconditions:
+The selected internet radio station is added to the user's personalized favorites list. 
+Requirenments:
+User must be able to navigate to the Favourite list from Internet Radio interface 
+User must be able to 'Remove from favorites' the Internet Radio station by pressing the same interface icon "|"Favorite Song operation
+Functional Description
+Users can set local music as favorites and view corresponding song information. This function is applicable to USB music, and online music. It can only be used when the vehicle is stopped through SWP operation.
 Enabling conditions (a & b):
 IVI system startup;
-Bluetooth phone connected.
+Users can operate the SWP;
 Trigger conditions (a):
-Incoming Phone Call.
-Execution output ((a|b) & c):
-SWP pops up a Bluetooth phone dialog box, displaying the call number and name (if the number has been saved in the phone address book). IVI automatically activates and switches to the mobile audio channel, and plays the incoming ringtone (if the incoming ringtone input of the mobile phone can be received (depending on the mobile phone), use the incoming call ringtone provided by the mobile phone, otherwise use the IVI default ringtone).
-The Bluetooth phone dialog box pops up on the SWP, displaying the incoming number and name (if the number has been saved in the phonebook), IVI automatically activates and switches to the mobile audio channel, and playing the incoming ringtone (Front speakers). (If the incoming ringtone input of the mobile phone can be received (depending on the phone), use the incoming call ringtone provided by the phone, otherwise use the IVI default ringtone)；
-IVI_IFT sends the incoming call status signal vehicle/cabin/lights/atmosphere/ambient-callin/req.
-Exit conditions/Exit conditions (a|b|c|d): Answer the incoming call.
-Accept the call End of incoming call.
-Reject the call. Miss the call. (The other party hung up the call or the call timed out)
-Miss the call (because CO stopped outcoming call or because of timeout).
-BT connection loss or BT switch OFF."|"Postconditions:
-If the call is accepted, the interior ambient light changes color, the call status is displayed on the HUD and SWP Android, and the vehicle's microphone (in_24) and speakers out_24 are used for the call. 
-If the call is rejected, the interior ambient light returns to its original color, the call notification is removed from the HUD and SWP Android, and a call rejection sound is played via out_24. "|"Main Scenario:
-An incoming call is received on the driver's phone (in_5). 
-The caller's information (name from the contact list or phone number) is displayed on the SWP Android (out_2). 
-The interior ambient light (out_12) changes color to signal the incoming call. 
-An incoming call sound is played through the vehicle's speakers (out_24). 
-The driver can accept or reject the call using the front buttons on the steering wheel (in_10) or via the voice assistant command (in_24). "|||"Preconditions
-Entertainment system is ready. in_2 
-The driver's smartphone is connected to the vehicle's system via Bluetooth (in_32)[I-6323] Pairing a Mobile Phone. "||||4
+Enter the music player and select USB music or network music. Click on the ""Favorite Songs"" or ""View Song Details"" soft button.
+Execution output (a & b & c & d & e):
+After setting a song as favorite, you can find the song in the favorites list. The favorite list is a collection of radio, USB music, and online music.
+After setting a song as a favorite, you can find it in the favorite list. The favorite list is a collection of radio, USB music, and online music.
+A song that has been set as a favorite can be unset. After cancellation, the song disappears from the favorite list.
+The favorite setting is memorized after the car is powered off.
+Store favorites list before IVI powered off.
+View the song information without affecting the playback/pause status, and display the corresponding song information, including the song name, performer, and album name.
+If the song information fails to be obtained, only the song name is displayed.
+If obtaining song information fails, only the song name will be displayed.
+If the USB drive is unplugged or a song is deleted from the USB drive, the song in the favorites list will be grayed out.
+Exit conditions (a)
+Display screen off;
+IVI shutdown;
+SWP music player local music playback page, network music playback page, providing software buttons for collecting and viewing song details.
+SWP music player local music playback page, network music playback page, providing software buttons for collecting and viewing song details.
+The SWP music player has a music collection interface and provides a software button to cancel the collection."|"Description: Actors:
+Car User 
+IVI Triggers:
+User selects to add the Radio via in_2/in_5 Use Case: Adding Internet Radio to Favorites List
+Triggers:
+User selects to add the Radio via in_2/in_5 Requirenments:
+User must be able to navigate to the Favourite list from Internet Radio interface 
+User must be able to 'Remove from favorites' the Internet Radio station by pressing the same interface icon "|"Postconditions:
+The selected internet radio station is added to the user's personalized favorites list. "|"Preconditions:
+User in in the Internet Radio list "|"Main Scenario:
+The user press on the UI interface ""Add to Favorites"" icon "|"Goal: User wants to add favorites internet radio to enlighten the access to his favorite music/info
+"||||4
+8604|Source selection for Media output|"[I-8604]  Source selection for Media output
+Description: 
+Goal: Enable user selection of multimedia audio sources.
+Context: Atom car is able to playback media from a list of sources like am/FM radio, internet radio, USB storage, internal SD card, and other devices connected via Bluetooth. Atom car users shall be able to select a source for media playback.
+Scope: This use case is about selecting the source, not browsing for content within the source. Assuming that user is inside the car, the car is ready to playback media from any aspect.
+Actors: User.
+
+Preconditions:
+ATOM is on 
+in_5. Smartphone is paired with the car 
+Main Scenario:
+User selects the ""Multimedia"" via in_5 or in_2/ 
+out_2/out_5 displays the available audio sources: 
+Internet Radio 
+FM Radio 
+USB 
+Internal SD card 
+Bluetooth 
+Postconditions:
+out_2/out_5 shows available media sources 
+Requirements:
+The action is displayed on the touchpoint from which this action is performed "|"Switch music sources
+Functional Description
+Users can switch music sources through the SWP or voice. It can only be used when the vehicle is stopped through SWP operation.
+Enabling conditions (a & b):
+IVI system startup;
+Users can operate the SWP.
+Trigger conditions (a | b):
+The user clicks on the SWP to select the corresponding audio source.
+The user wakes up the voice assistant and switches the audio source through voice commands.
+Execution output (a):
+The system switches the corresponding audio source.
+The system switches the corresponding audio source.
+Exit conditions (a):
+IVI system shutdown;
+The SWP can switch between network/USB/Bluetooth music interfaces.
+The voice recognition system can recognize audio source switching commands.
+The SWP can switch between network/USB/Bluetooth music interfaces.
+The voice recognition system can recognize audio source switching commands."|"Description: Scope: This use case is about selecting the source, not browsing for content within the source. Assuming that user is inside the car, the car is ready to playback media from any aspect.Actors: User.
+Requirements:
+The action is displayed on the touchpoint from which this action is performed "|"Postconditions:
+out_2/out_5 shows available media sources "|"Preconditions:
+ATOM is on 
+in_5. Smartphone is paired with the car "|"Main Scenario:
+User selects the ""Multimedia"" via in_5 or in_2/ "|Goal: Enable user selection of multimedia audio sources.||||2
 26161|FM Radio Stations switching|"[I-26161]  FM Radio Stations switching
 Description: 
 Preconditions:
@@ -692,12 +692,12 @@ During the automatic search process, if no valid radio station is found, continu
 Exit conditions (a|b):
 Display screen off;
 Audio source switching.
-Audio source switching."|"Postconditions:
+Audio source switching."|"Description: Requirenments:
+The action is displayed on the touchpoint from which this action is performed "|"Postconditions:
 out_5/out_2 shows the station information 
-24.1 All Multimedia Sounds. Speaker plays the new station output "|"Main Scenario:
-User presses the forward/backward button via in_2/in_5/in_10 
-IVI switches the next/previous FM Radio station in the list "||"Description: Requirenments:
-The action is displayed on the touchpoint from which this action is performed "|"Preconditions:
+24.1 All Multimedia Sounds. Speaker plays the new station output "|"Preconditions:
 User has selected FM Radio playback 
 Smartphone in_5 Bluetooth switched on 
-Smartphone in_5 paired with Vehicle "||||4
+Smartphone in_5 paired with Vehicle "|"Main Scenario:
+User presses the forward/backward button via in_2/in_5/in_10 
+IVI switches the next/previous FM Radio station in the list "|||||4

@@ -1,16 +1,16 @@
 from pathlib import Path
 import re
-from typing import Any
+from typing import Any, List, Dict
 
 import docx
 from docx import Document
 
 
-def extract_text_from_docx(docx: docx.document.Document) -> list[str]:
+def extract_text_from_docx(docx: docx.document.Document) -> List[str]:
     return [para.text for para in docx.paragraphs]
 
 
-def extract_elements(lines: list[str], subheader: str) -> str:
+def extract_elements(lines: List[str], subheader: str) -> str:
     result = []
     start_found = False
 
@@ -19,7 +19,7 @@ def extract_elements(lines: list[str], subheader: str) -> str:
             start_found = True
             result.append(element)
             continue
-        
+
         if start_found:
             if ':' in element:
                 break
@@ -28,17 +28,17 @@ def extract_elements(lines: list[str], subheader: str) -> str:
     return "\n".join(result)
 
 
-def create_ds_row(fid: str, hmi_dir: Path, ssts_dir: Path, columns: list[str]) -> dict[str: Any]:
+def create_ds_row(fid: str, hmi_dir: Path, ssts_dir: Path, columns: List[str]) -> Dict[str, Any]:
     try:
         hmi_docx = Document(hmi_dir / f'UC-{fid}.docx')
-    
+
     except Exception as e:
         print(f'Warning! {e}')
         hmi_docx = None
 
     try:
         ssts_docx = Document(ssts_dir / f'SSTS-{fid}.docx')
-    
+
     except Exception as e:
         print(f'Warning! {e}')
         ssts_docx = None
@@ -51,7 +51,7 @@ def create_ds_row(fid: str, hmi_dir: Path, ssts_dir: Path, columns: list[str]) -
         row = dict().fromkeys(columns)
 
         row["id"] = fid
-        row["case_name"] = re.sub("\[I-\d+\]", "", re.sub(r'$$.*?$$|\s*[\xa0]+\s*', ' ', hmi_docx.paragraphs[0].text)).strip()
+        row["case_name"] = re.sub(r"\[I-\d+\]", "", re.sub(r'\$\$.*?\$\$|\s*[\xa0]+\s*', ' ', hmi_docx.paragraphs[0].text)).strip()
         row["full_uc_text"] = "\n".join(uc_lines)
         row["full_ssts_text"] = "\n".join(extract_text_from_docx(ssts_docx)) if ssts_docx is not None else None
         row["main_scenario"] = extract_elements(uc_lines, "main_scenario")
