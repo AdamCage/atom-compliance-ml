@@ -3,9 +3,9 @@ import zipfile
 
 
 def build():
-    script_dir = "artifacts"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     source_dir = os.path.abspath(os.path.join(script_dir, '..'))
-    output_dir = os.path.join(source_dir, 'artifacts')
+    output_dir = os.path.join(source_dir, 'build_artifacts', 'artifacts')
     os.makedirs(output_dir, exist_ok=True)
     output_filename = 'atom-compliance-ml.zip'
     output_path = os.path.join(output_dir, output_filename)
@@ -20,6 +20,7 @@ def build():
                 file_path = os.path.join(root, file)
                 arcname = os.path.relpath(file_path, source_dir)
                 zipf.write(file_path, arcname)
+    zipf.close()
     print("Архив успешно создан и сохранен в:", output_path)
 
 
