@@ -10,11 +10,11 @@ from nltk.corpus import stopwords
 import pandas as pd
 
 
-def extract_text_from_docx(docx: docx.document.Document) -> List[str]:
+def extract_text_from_docx(docx: docx.document.Document) -> list[str]:
     return [para.text for para in docx.paragraphs]
 
 
-def extract_elements(lines: List[str], subheader: str) -> str:
+def extract_elements(lines: list[str], subheader: str) -> str:
     result = []
     start_found = False
 
