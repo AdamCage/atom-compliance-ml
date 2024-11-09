@@ -16,3 +16,4 @@ def load_yaml(path: Path) -> dict[str, Any]:
 
     with open(path, "r") as file:
         return yaml.safe_load(file)
+
