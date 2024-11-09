@@ -57,5 +57,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: 1.0
-          path: artifacts/atom-compliance-ml-test-release.zip
+          path: build_artifacts/artifacts/atom-compliance-ml-test-release.zip
           if-no-files-found: error
