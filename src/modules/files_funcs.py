@@ -18,6 +18,7 @@ def load_yaml(path: Path) -> Dict[str, Any]:
     with open(path, "r") as file:
         return yaml.safe_load(file)
 
+
 def obj_to_pickle(obj: Any, path: Path) -> None:
     """Сохраняет объект в файл с помощью joblib.
 
