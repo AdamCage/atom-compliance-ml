@@ -4,9 +4,9 @@ ds_topology:
     preconditions: preconditions
     main_scenario: main_scenario
     postconditions: postconditions
-    alternative_scenario_a: alternative_scenario
-    alternative_scenario_b: alternative_scenario
-    alternative_scenario_c: alternative_scenario
+    alternative_scenario_a: other
+    alternative_scenario_b: other
+    alternative_scenario_c: other
     description: other
     goal: goal
     context: other
@@ -14,10 +14,10 @@ ds_topology:
     actors: other
     requirements: other
     trigger: other
-    alternative_scenarios: alternative_scenario
-    alternative_scenario: alternative_scenario
+    alternative_scenarios: other
+    alternative_scenario: other
     use_case_title: other
-    alternative_scenario_a_a(turn_off_the_hotspot): alternative_scenario
+    alternative_scenario_a_a(turn_off_the_hotspot): other
     tigger: other
     components: other
     function_logic: other
@@ -35,3 +35,10 @@ target_dict:
   PC: 3
   NC: 2
   NA: 1
+
+ds:
+  sep: "|"
+  encoding: utf-8
+
+bert: bert-base-uncased
+distance_metric: cosine
