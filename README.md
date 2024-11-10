@@ -99,9 +99,8 @@ atom-compliance-ml
 │     ├─ HMI                     # UC-визы
 │     └─ SSTS                    # SSTS-визы
 ├─ doc
-├─ inference                     # Директория для инфереса (FULL LAUNCH)
-│  ├─ logs                       # Логи инференса
-│  └─ submissions                # Директория результатов инференса (submissions)
+├─ logs                          # Логи инференса (FULL LAUNCH)
+├─ submissions                   # Директория результатов (submissions) инференса (FULL LAUNCH)
 ├─ LICENSE
 ├─ models                        # Артефакты модели, графики, метрики и т.д.
 └─ src                           # Ноутбуки для обучения и экспериментов, модули
