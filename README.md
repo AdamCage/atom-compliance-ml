@@ -1,3 +1,9 @@
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+
 # Контроль и управление изменениями в тендерных закупках
 ## Описание проекта
 
@@ -46,7 +52,7 @@ pip install -r equirements.txt
 
 ## Режим инференса (FULL LAUNCH)
 
-Для проведения теста проекта и инференса используется Jupyter Notebook `FULL LAUNCH.ipynb`? расположенный в директории `./inference`.
+Для проведения теста проекта и инференса используется Jupyter Notebook `FULL LAUNCH.ipynb`, расположенный в директории `./inference`.
 
 Через данный ноутбук осуществляется следующий функционал:
 1. Загрузка инференс-данных заключений типа HMI и SSTS из .docx-файлов и представление их в виде датасета
@@ -119,3 +125,5 @@ atom-compliance-ml
    - @egor_lyadsky
 - Александр, DS
    - @BeesKnights
+
+![alt text](team_logo.png)
